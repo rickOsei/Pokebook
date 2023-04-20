@@ -1,0 +1,63 @@
+.home-main-container {
+  margin: 0 auto;
+  padding: 125px 0;
+  width: 35%;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-logo {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.home-main-title {
+  font-size: 48px;
+  margin-bottom: 15px;
+  text-align: center;
+  letter-spacing: 3px;
+  font-family: "Schibsted Grotesk", sans-serif;
+  /* font-family: "Noto Sans", sans-serif; */
+}
+
+.home-main-description {
+  text-align: center;
+
+  font-size: 18px;
+  letter-spacing: 1.1px;
+}
+
+.search-view {
+  margin-top: 75px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.search-view input {
+  width: 100%;
+  height: 75px;
+  margin-bottom: 15px;
+  padding: 15px 25px;
+  border: 7px solid;
+  border-radius: 60px;
+}
+
+.search-view input::placeholder {
+  font-size: 24px;
+
+  font-weight: 400;
+  color: rgb(137, 137, 137);
+}
+
+.view-list-link {
+  font-size: 18px;
+  font-weight: 500;
+  border-bottom: 2px solid black;
+}
