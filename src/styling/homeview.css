@@ -40,6 +40,7 @@
   padding: 15px 25px;
   border: 8px solid;
   border-radius: 60px;
+  font-size: 20px;
 }
 
 .search-view input::placeholder {
@@ -59,6 +60,7 @@
   width: 40px;
   height: 40px;
   background: red;
+  cursor: pointer;
 
   display: flex;
   justify-content: center;

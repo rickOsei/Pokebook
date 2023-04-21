@@ -1,27 +1,28 @@
-import React, { useEffect, useState } from "react";
-import Logo from "../svg/Logo";
 import "../styling/navbar.css";
+
+import React, { useEffect, useState } from "react";
 import { MdOutlineSearch } from "react-icons/md";
+import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 import ColorSelector from "./ColorSelector";
 import Title from "./Title";
 import NavLogo from "../svg/NavLogo";
-import { NavLink } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
 import { setSearchItem } from "../Features/listSlice";
 
 const Navbar = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-  const { search } = useSelector((state) => state.pokemonList);
+  const { searchState } = useSelector((state) => state.pokemonList);
+  const [searchTerm, setSearchTerm] = useState(searchState);
   const dispatch = useDispatch();
 
   const dispatchSearchItem = () => {
-    dispatch(setSearchItem(searchTerm));
+    if (!searchTerm) {
+      dispatch(setSearchItem(searchTerm));
+    }
   };
-  // useEffect(() => {
-  //   dispatchSearchItem();
-  // }, [searchTerm]);
-
-  console.log(searchTerm, search);
+  useEffect(() => {
+    dispatchSearchItem();
+  }, [searchTerm]);
 
   return (
     <nav>

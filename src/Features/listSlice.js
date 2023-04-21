@@ -1,19 +1,20 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getFuelData = createAsyncThunk("cart/getFuelData", async () => {
+export const getPokemonData = createAsyncThunk("cart/getFuelData", async () => {
   try {
-    const { data } = await axios.get(
-      "https://cedi-rates.herokuapp.com/api/v1/fuelPrices/"
-    );
-    // console.log(data.fuelPrices.data);
-    return data.fuelPrices.data;
-  } catch (err) {}
+    const data = await axios.get("https://pokeapi.co/docs/v2#pokemon-section");
+
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 const initialState = {
   pokemonList: ["One", "Two", "Three"],
-  search: "0",
+  searchState: "0",
+  isLoading: true,
 };
 
 const ListSlice = createSlice({
@@ -23,19 +24,19 @@ const ListSlice = createSlice({
     setSearchItem: (state, action) => {
       return {
         ...state,
-        search: action.payload,
+        searchState: action.payload,
       };
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(getFuelData.pending, (state) => {
+    builder.addCase(getPokemonData.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(getFuelData.fulfilled, (state, action) => {
+    builder.addCase(getPokemonData.fulfilled, (state, action) => {
       state.isLoading = false;
       state.fuelData = action.payload;
     });
-    builder.addCase(getFuelData.rejected, (state) => {
+    builder.addCase(getPokemonData.rejected, (state) => {
       state.isLoading = false;
     });
   },

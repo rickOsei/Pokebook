@@ -1,24 +1,24 @@
-import React, { useState } from "react";
-import Logo from "../svg/Logo";
 import "../styling/homeview.css";
+
+import React, { useState } from "react";
 import { MdOutlineSearch } from "react-icons/md";
-import Title from "../components/Title";
 import { NavLink, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+
+import Logo from "../svg/Logo";
+import Title from "../components/Title";
 import { setSearchItem } from "../Features/listSlice";
 
 const HomeView = ({ color }) => {
-  const [searchTerm, setSearchTerm] = useState("");
+  const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
-  const { search } = useSelector((state) => state.pokemonList);
+  const { searchState } = useSelector((state) => state.pokemonList);
   const dispatch = useDispatch();
 
   const dispatchSearchItem = () => {
-    dispatch(setSearchItem(searchTerm));
+    dispatch(setSearchItem(searchInput));
     navigate("/pokemon-list");
   };
-
-  console.log(search);
 
   return (
     <main>
@@ -39,8 +39,8 @@ const HomeView = ({ color }) => {
             type="text"
             placeholder="Enter pokemon name"
             style={{ borderColor: color }}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            value={searchInput}
+            onChange={(e) => setSearchInput(e.target.value)}
           />
           <div
             className="search-icon"

@@ -1,26 +1,28 @@
+import "../styling/listview.css";
 import React from "react";
 import Navbar from "../components/Navbar";
 import { useSelector, useDispatch } from "react-redux";
+import Logo from "../svg/Logo";
 
 const ListView = () => {
-  const { pokemonList, search } = useSelector((state) => state.pokemonList);
+  const { pokemonList, searchState, isLoading } = useSelector(
+    (state) => state.pokemonList
+  );
   const filteredList = pokemonList.filter((pokemon) => {
-    if (search) {
-      return pokemon.includes(search);
+    if (searchState) {
+      return pokemon.includes(searchState);
     } else {
       return pokemon;
     }
   });
 
-  console.log(search);
+  // console.log(searchState, isLoading);
   return (
     <>
       <Navbar />
-      <div>
-        {filteredList.map((pokemon, key) => {
-          return <h1 key={key}>{pokemon}</h1>;
-        })}
-      </div>
+      <section className="pokemon-list-section">
+        <div className="pokemon-list-container"></div>
+      </section>
     </>
   );
 };
