@@ -15,19 +15,6 @@
   justify-content: center;
 }
 
-.home-main-title {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 15px;
-  text-align: center;
-  letter-spacing: 4px;
-  font-family: "Clash Display", sans-serif;
-}
-
-.home-main-title-span {
-  font-family: "Clash Display", sans-serif;
-}
-
 .home-main-description {
   text-align: center;
   color: black;
@@ -71,6 +58,7 @@
   border-radius: 50%;
   width: 40px;
   height: 40px;
+  background: red;
 
   display: flex;
   justify-content: center;
@@ -85,5 +73,5 @@
 .view-list-link {
   font-size: 18px;
   font-weight: 500;
-  border-bottom: 2px solid black;
+  /* border-bottom: 2px solid black; */
 }
