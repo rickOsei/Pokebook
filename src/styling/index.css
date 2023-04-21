@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:wght@100;200;300;400;500&family=Schibsted+Grotesk:ital,wght@0,400;0,500;1,600&display=swap");
+@import url("https://fonts.cdnfonts.com/css/clash-display");
 
 @font-face {
   font-family: "General-Sans";
@@ -12,7 +12,11 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "General-Sans";
+  font-family: "General-Sans", sans-serif;
+}
+
+h1 {
+  font-family: "Clash Display", sans-serif;
 }
 
 body {
@@ -21,6 +25,10 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  background-image: url("../images/background.png");
+  /* mix-blend-mode: multiply; */
+  mix-blend-mode: darken;
 }
 
 code {

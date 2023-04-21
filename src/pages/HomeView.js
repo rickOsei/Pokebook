@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../svg/Logo";
 import "../styling/homeview.css";
+import { MdOutlineSearch } from "react-icons/md";
 
 const HomeView = ({ color }) => {
   console.log(color);
@@ -12,7 +13,10 @@ const HomeView = ({ color }) => {
             <Logo />
           </figure>
           <h2 className="home-main-title">
-            Poké<span style={{ color: color }}>book</span>
+            Poké
+            <span style={{ color: color }} className="home-main-title-span">
+              book
+            </span>
           </h2>
           <p className="home-main-description">
             Largest Pokémon index with information <br />
@@ -26,6 +30,10 @@ const HomeView = ({ color }) => {
             placeholder="Enter pokemon name"
             style={{ borderColor: color }}
           />
+          <div className="search-icon" style={{ background: color }}>
+            <MdOutlineSearch />
+          </div>
+
           <h4 className="view-list-link">View all</h4>
         </section>
       </div>
