@@ -1,19 +1,24 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getPokemonData = createAsyncThunk("cart/getFuelData", async () => {
-  try {
-    const data = await axios.get("https://pokeapi.co/docs/v2#pokemon-section");
-
-    return data;
-  } catch (err) {
-    console.log(err);
+export const getPokemonData = createAsyncThunk(
+  "cart/getPokemonData",
+  async () => {
+    try {
+      const {
+        data: { results },
+      } = await axios.get("https://pokeapi.co/api/v2/pokemon/?limit=5");
+      // console.log(results);
+      return results;
+    } catch (err) {
+      console.log(err);
+    }
   }
-});
+);
 
 const initialState = {
-  pokemonList: ["One", "Two", "Three"],
-  searchState: "0",
+  pokemonList: [],
+  searchState: "",
   isLoading: true,
 };
 
@@ -34,7 +39,7 @@ const ListSlice = createSlice({
     });
     builder.addCase(getPokemonData.fulfilled, (state, action) => {
       state.isLoading = false;
-      state.fuelData = action.payload;
+      state.pokemonList = action.payload;
     });
     builder.addCase(getPokemonData.rejected, (state) => {
       state.isLoading = false;
