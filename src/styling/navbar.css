@@ -1,0 +1,51 @@
+nav {
+  background: rgb(178, 178, 178);
+  width: 100vw;
+  height: 80px;
+
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+
+  position: relative;
+}
+
+.nav-logo {
+  flex: 1;
+}
+
+.nav-search-input {
+  flex: 1;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.nav-search-input input {
+  width: 85%;
+  height: 100%;
+  margin-bottom: 15px;
+  padding: 10px 50px;
+  border-radius: 100px;
+  border: none;
+  box-shadow: 2px 2px 2px 2px gray;
+}
+
+.nav-search-input input::placeholder {
+  font-size: 16px;
+}
+
+.nav-search-icon {
+  position: absolute;
+  left: 12%;
+  top: 13.5px;
+}
+
+.nav-search-icon svg {
+  font-size: 22px;
+}
+
+.nav-color-selector {
+  flex: 1;
+}
