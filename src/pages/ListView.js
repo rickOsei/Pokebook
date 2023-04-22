@@ -1,4 +1,5 @@
 import "../styling/listview.css";
+import "../styling/pokemonCard.css";
 import React, { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import { useSelector, useDispatch } from "react-redux";
@@ -9,9 +10,8 @@ const ListView = () => {
   const { pokemonList, searchState, isLoading } = useSelector(
     (state) => state.pokemonList
   );
-  const [pokemonDetails, setPokemonDetails] = useState([]);
 
-  console.log(pokemonList);
+  const [tempPokemonDetails, setTempPokemonDetails] = useState([]);
 
   const getPokemonDetails = (arr) => {
     arr.forEach(async (pokemon) => {
@@ -19,15 +19,15 @@ const ListView = () => {
         `https://pokeapi.co/api/v2/pokemon/${pokemon.name}`
       );
 
-      setPokemonDetails((prev) => [...prev, data]);
+      setTempPokemonDetails((prev) => [...prev, data]);
     });
   };
 
   useEffect(() => {
     getPokemonDetails(pokemonList);
-  }, []);
+  }, [pokemonList]);
 
-  console.log(pokemonDetails.slice(0, 5));
+  const pokemonDetails = tempPokemonDetails.slice(0, 5);
 
   // const filteredList = pokemonList.filter((pokemon) => {
   //   if (searchState) {
