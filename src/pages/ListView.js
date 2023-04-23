@@ -44,7 +44,7 @@ const ListView = () => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(pokemonDetails.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(pokemonDetails.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage]);
+  }, [itemOffset, itemsPerPage, pokemonDetails]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % pokemonDetails.length;

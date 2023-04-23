@@ -6,20 +6,34 @@ import { closeSideModal } from "../Features/listSlice";
 
 const SideModal = ({ pokemonDetails }) => {
   const [activeButton, setActiveButton] = useState("about");
+  const [singlePokemonDetails, setSinglePokemonDetails] = useState([]);
   const { pokemonName, isModalOpen } = useSelector(
     (state) => state.pokemonList
   );
   const { generalColor } = useSelector((state) => state.generalColor);
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    if (pokemonName) {
+      setSinglePokemonDetails(
+        pokemonDetails.filter((pokemon) => pokemon.name === pokemonName)
+      );
+    }
+  }, [pokemonDetails]);
 
-  const singlePokemonDetails = pokemonDetails.filter(
-    (pokemon) => pokemon.name === pokemonName
-  );
+  if (singlePokemonDetails.length === 0) {
+    return (
+      <aside
+        className="side-modal-container"
+        style={{
+          right: isModalOpen ? 0 : "-50%",
+        }}
+      >
+        <h1>Loading...</h1>
+      </aside>
+    );
+  }
 
-  console.log(isModalOpen);
-
-  console.log(singlePokemonDetails);
   const { sprites, name, types, abilities, height, weight, stats } =
     singlePokemonDetails[0];
   return (
@@ -140,7 +154,7 @@ const SideModal = ({ pokemonDetails }) => {
             Similar
           </button>
         </div>
-      </section>{" "}
+      </section>
     </aside>
   );
 };
