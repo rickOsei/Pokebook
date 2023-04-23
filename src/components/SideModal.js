@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { closeSideModal } from "../Features/listSlice";
 
 const SideModal = ({ pokemonDetails }) => {
+  const [activeButton, setActiveButton] = useState("about");
   const { pokemonName, isModalOpen } = useSelector(
     (state) => state.pokemonList
   );
@@ -25,8 +26,7 @@ const SideModal = ({ pokemonDetails }) => {
     <aside
       className="side-modal-container"
       style={{
-        right: isModalOpen ? "-200%" : 0,
-        display: isModalOpen ? "flex" : "none",
+        right: isModalOpen ? 0 : "-50%",
       }}
     >
       <section className="pokemon-desc">
@@ -53,8 +53,10 @@ const SideModal = ({ pokemonDetails }) => {
           </div>
         </div>
       </section>
-
-      <section className="about-pokemon">
+      <section
+        className="about-pokemon"
+        style={{ display: activeButton === "about" ? "flex" : "none" }}
+      >
         <div className="about-container">
           <h1 className="side-modal-title">About</h1>
           <div className="details-container">
@@ -77,8 +79,10 @@ const SideModal = ({ pokemonDetails }) => {
           </div>
         </div>
       </section>
-
-      {/* <section className="pokemon-stats">
+      <section
+        className="pokemon-stats"
+        style={{ display: activeButton === "stats" ? "flex" : "none" }}
+      >
         <h1 className="side-modal-title">Stats</h1>
 
         {stats.map((pokemonStat) => {
@@ -105,14 +109,38 @@ const SideModal = ({ pokemonDetails }) => {
             </div>
           );
         })}
-      </section> */}
+      </section>
       <section className="side-modal-buttons">
         <div className="button-container">
-          <button className="side-btn">About</button>
-          <button className="side-btn">Stats</button>
-          <button className="side-btn">Similar</button>
+          <button
+            className="side-btn"
+            onClick={() => setActiveButton("about")}
+            style={{
+              background: activeButton === "about" ? "white" : "transparent",
+            }}
+          >
+            About
+          </button>
+          <button
+            className="side-btn"
+            onClick={() => setActiveButton("stats")}
+            style={{
+              background: activeButton === "stats" ? "white" : "transparent",
+            }}
+          >
+            Stats
+          </button>
+          <button
+            className="side-btn"
+            onClick={() => setActiveButton("similar")}
+            style={{
+              background: activeButton === "similar" ? "white" : "transparent",
+            }}
+          >
+            Similar
+          </button>
         </div>
-      </section>
+      </section>{" "}
     </aside>
   );
 };
