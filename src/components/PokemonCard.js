@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ViewButton from "./ViewButton";
 import { useDispatch, useSelector } from "react-redux";
-import { setPokemonName, openModal } from "../Features/listSlice";
+import { setPokemonName, openSideModal } from "../Features/listSlice";
 
 const PokemonCard = ({ name, types, sprites }) => {
   const { isModalOpen, pokemonName } = useSelector(
@@ -15,7 +15,7 @@ const PokemonCard = ({ name, types, sprites }) => {
 
   const handleClick = () => {
     dispatch(setPokemonName(name));
-    dispatch(openModal());
+    dispatch(openSideModal());
   };
 
   return (

@@ -8,9 +8,10 @@ import PokemonCard from "../components/PokemonCard";
 import ReactPaginate from "react-paginate";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import SideModal from "../components/SideModal";
+import ColorModal from "../components/ColorModal";
 
 const ListView = () => {
-  const { pokemonList, searchState, isLoading } = useSelector(
+  const { pokemonList, searchState, isLoading, isModalOpen } = useSelector(
     (state) => state.pokemonList
   );
 
@@ -96,7 +97,8 @@ const ListView = () => {
           </select>
         </div>
       </section>
-      <SideModal />
+      <ColorModal />
+      <SideModal pokemonDetails={pokemonDetails} />
     </>
   );
 };

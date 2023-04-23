@@ -40,13 +40,13 @@ const ListSlice = createSlice({
         pokemonName: action.payload,
       };
     },
-    openModal: (state, action) => {
+    openSideModal: (state, action) => {
       return {
         ...state,
         isModalOpen: true,
       };
     },
-    closeModal: (state, action) => {
+    closeSideModal: (state, action) => {
       return {
         ...state,
         isModalOpen: false,
@@ -68,7 +68,7 @@ const ListSlice = createSlice({
 });
 
 const ListReducer = ListSlice.reducer;
-export const { setSearchItem, setPokemonName, openModal, closeModal } =
+export const { setSearchItem, setPokemonName, openSideModal, closeSideModal } =
   ListSlice.actions;
 
 export default ListReducer;

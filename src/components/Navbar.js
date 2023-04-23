@@ -9,9 +9,11 @@ import ColorSelector from "./ColorSelector";
 import Title from "./Title";
 import NavLogo from "../svg/NavLogo";
 import { setSearchItem } from "../Features/listSlice";
+import { openModal } from "../Features/colorSlice";
 
 const Navbar = () => {
   const { searchState } = useSelector((state) => state.pokemonList);
+  const { generalColor } = useSelector((state) => state.generalColor);
   const [searchTerm, setSearchTerm] = useState(searchState);
   const dispatch = useDispatch();
 
@@ -46,8 +48,11 @@ const Navbar = () => {
           <MdOutlineSearch />
         </div>
       </div>
-      <section className="nav-color-selector">
-        <ColorSelector />
+      <section
+        className="nav-color-selector"
+        onClick={() => dispatch(openModal())}
+      >
+        <ColorSelector color={generalColor} />
       </section>
     </nav>
   );
