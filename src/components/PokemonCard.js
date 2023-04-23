@@ -1,40 +1,44 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import ViewButton from "./ViewButton";
+import { useDispatch, useSelector } from "react-redux";
+import { setPokemonName, openModal } from "../Features/listSlice";
 
 const PokemonCard = ({ name, types, sprites }) => {
-  // const [pokeType, setPokeType] = useState([]);
-  // const getPokemonType = (arr) => {
-  //   arr.forEach(async (pokemon) => {
-  //     const { data } = await axios.get(`${pokemon.type.url}`);
+  const { isModalOpen, pokemonName } = useSelector(
+    (state) => state.pokemonList
+  );
 
-  //     setPokeType((prev) => [...prev, data]);
-  //   });
-  // };
+  // console.log(isModalOpen, pokemonName);
 
-  // useEffect(() => {
-  //   getPokemonType(types);
-  // }, []);
-  // console.log(pokeType);
+  const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(setPokemonName(name));
+    dispatch(openModal());
+  };
+
   return (
-    <article className="pokemon-card">
-      <figure className="pokemon-icon">
-        <img src={sprites.other.dream_world.front_default} alt="name" />
-      </figure>
-      <div className="pokemon-details">
-        <h1 className="pokemon-name">{name}</h1>
-        <div className="pokemon-types">
-          {types.map((pokemon, index) => {
-            return (
-              <h4 className="pokemon-type" key={index}>
-                {pokemon.type.name}
-              </h4>
-            );
-          })}
+    <>
+      <article className="pokemon-card">
+        <figure className="pokemon-icon">
+          <img src={sprites.other.dream_world.front_default} alt={name} />
+        </figure>
+        <div className="pokemon-details">
+          <h1 className="pokemon-name">{name}</h1>
+          <div className="pokemon-types">
+            {types.map((pokemon, index) => {
+              return (
+                <h4 className="pokemon-type" key={index}>
+                  {pokemon.type.name}
+                </h4>
+              );
+            })}
+          </div>
         </div>
-      </div>
-      {/* <ViewButton /> */}
-    </article>
+        <ViewButton handleClick={handleClick} />
+      </article>
+    </>
   );
 };
 

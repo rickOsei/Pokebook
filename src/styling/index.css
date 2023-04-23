@@ -6,6 +6,8 @@
     url("../fonts/GeneralSans-Variable.ttf") format("truetype");
 }
 
+/* Global */
+
 *,
 ::after,
 ::before {
@@ -27,14 +29,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 
   background-image: url("../images/background.png");
-  /* mix-blend-mode: multiply; */
-  /* background-blend-mode: color-burn; */
-  /* mix-blend-mode: darken; */
+  overflow-x: hidden;
 }
 
 a {
   text-decoration: none;
   color: black;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  cursor: pointer;
 }
 
 code {

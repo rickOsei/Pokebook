@@ -1,8 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const getPokemonData = createAsyncThunk(
-  "cart/getPokemonData",
+export const getSinglePokemonData = createAsyncThunk(
+  "cart/getSinglePokemonData",
   async () => {
     try {
       const {
@@ -18,10 +18,8 @@ export const getPokemonData = createAsyncThunk(
 
 const initialState = {
   pokemonList: [],
-  pokemonName: "",
   searchState: "",
   isLoading: true,
-  isModalOpen: false,
 };
 
 const ListSlice = createSlice({
@@ -32,24 +30,6 @@ const ListSlice = createSlice({
       return {
         ...state,
         searchState: action.payload,
-      };
-    },
-    setPokemonName: (state, action) => {
-      return {
-        ...state,
-        pokemonName: action.payload,
-      };
-    },
-    openModal: (state, action) => {
-      return {
-        ...state,
-        isModalOpen: true,
-      };
-    },
-    closeModal: (state, action) => {
-      return {
-        ...state,
-        isModalOpen: false,
       };
     },
   },
@@ -68,7 +48,6 @@ const ListSlice = createSlice({
 });
 
 const ListReducer = ListSlice.reducer;
-export const { setSearchItem, setPokemonName, openModal, closeModal } =
-  ListSlice.actions;
+export const { setSearchItem } = ListSlice.actions;
 
 export default ListReducer;
