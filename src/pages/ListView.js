@@ -7,6 +7,8 @@ import axios from "axios";
 import PokemonCard from "../components/PokemonCard";
 import ReactPaginate from "react-paginate";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
+import { MdOutlineSearch } from "react-icons/md";
+import { setSearchItem } from "../Features/listSlice";
 import SideModal from "../components/SideModal";
 import ColorModal from "../components/ColorModal";
 
@@ -14,6 +16,8 @@ const ListView = () => {
   const { pokemonList, searchState, isLoading, isModalOpen } = useSelector(
     (state) => state.pokemonList
   );
+  const dispatch = useDispatch();
+  const [searchTerm, setSearchTerm] = useState(searchState);
 
   const [tempPokemonDetails, setTempPokemonDetails] = useState([]);
 
@@ -51,26 +55,45 @@ const ListView = () => {
     setItemOffset(newOffset);
   };
 
-  // const filteredList = pokemonList.filter((pokemon) => {
-  //   if (searchState) {
-  //     return pokemon.includes(searchState);
-  //   } else {
-  //     return pokemon;
-  //   }
-  // });
+  // search logic
 
-  // console.log(searchState, isLoading);
-  // console.log(pokemonDetails);
+  const dispatchSearchItem = () => {
+    if (searchTerm) {
+      dispatch(setSearchItem(searchTerm));
+    }
+  };
+  useEffect(() => {
+    dispatchSearchItem();
+  }, [searchTerm]);
+
+  const filteredList = currentItems.filter((pokemon) => {
+    if (searchState && searchTerm) {
+      return pokemon.name.includes(searchState);
+    } else {
+      return pokemon;
+    }
+  });
 
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
   return (
     <>
-      <Navbar />
+      <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <div className="list-search-input">
+        <input
+          type="text"
+          placeholder="Enter pokemon name"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+        <div className="list-search-icon">
+          <MdOutlineSearch />
+        </div>
+      </div>
       <section className="pokemon-list-section">
         <div className="pokemon-list-container">
-          {currentItems.map((pokemon, index) => {
+          {filteredList.map((pokemon, index) => {
             return <PokemonCard {...pokemon} key={index} />;
           })}
         </div>

@@ -11,14 +11,13 @@ import NavLogo from "../svg/NavLogo";
 import { setSearchItem } from "../Features/listSlice";
 import { openModal } from "../Features/colorSlice";
 
-const Navbar = () => {
+const Navbar = ({ searchTerm, setSearchTerm }) => {
   const { searchState } = useSelector((state) => state.pokemonList);
   const { generalColor } = useSelector((state) => state.generalColor);
-  const [searchTerm, setSearchTerm] = useState(searchState);
   const dispatch = useDispatch();
 
   const dispatchSearchItem = () => {
-    if (!searchTerm) {
+    if (searchTerm) {
       dispatch(setSearchItem(searchTerm));
     }
   };
