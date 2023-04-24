@@ -44,7 +44,7 @@ const ListView = () => {
     const endOffset = itemOffset + itemsPerPage;
     setCurrentItems(pokemonDetails.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(pokemonDetails.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, tempPokemonDetails]);
+  }, [itemOffset, itemsPerPage, pokemonDetails]);
 
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % pokemonDetails.length;
@@ -60,13 +60,19 @@ const ListView = () => {
   // });
 
   // console.log(searchState, isLoading);
-  // console.log(pokemonDetails);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
   }
   return (
     <>
+      <div
+        className="side-modal-background"
+        // style={{ display: isModalOpen ? "block" : "none" }}
+        style={{
+          right: isModalOpen ? 0 : "-150%",
+        }}
+      ></div>
       <Navbar />
       <section className="pokemon-list-section">
         <div className="pokemon-list-container">

@@ -32,8 +32,6 @@ const Navbar = () => {
       <NavLink to={"/"} className="nav-logo">
         <figure className="nav-logo-figure">
           <NavLogo />
-
-          {/* <Logo /> */}
         </figure>
         <Title margin="14px 0 0 15px" />
       </NavLink>
