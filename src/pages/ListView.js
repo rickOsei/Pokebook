@@ -1,22 +1,28 @@
 import "../styling/listview.css";
 import "../styling/pokemonCard.css";
-import React, { useEffect, useState } from "react";
-import Navbar from "../components/Navbar";
+
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import axios from "axios";
-import PokemonCard from "../components/PokemonCard";
 import ReactPaginate from "react-paginate";
+
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { MdOutlineSearch } from "react-icons/md";
-import { setSearchItem } from "../Features/listSlice";
+import axios from "axios";
+
+import Navbar from "../components/Navbar";
+import PokemonCard from "../components/PokemonCard";
 import SideModal from "../components/SideModal";
 import ColorModal from "../components/ColorModal";
+
+import { setSearchItem } from "../Features/listSlice";
+import SelectComponent from "../components/SelectComponent";
 
 const ListView = () => {
   const { pokemonList, searchState, isLoading, isModalOpen } = useSelector(
     (state) => state.pokemonList
   );
   const dispatch = useDispatch();
+
   const [searchTerm, setSearchTerm] = useState(searchState);
 
   const [tempPokemonDetails, setTempPokemonDetails] = useState([]);
@@ -35,7 +41,7 @@ const ListView = () => {
     getPokemonDetails(pokemonList);
   }, [pokemonList]);
 
-  const pokemonDetails = tempPokemonDetails.slice(0, 20);
+  const pokemonDetails = tempPokemonDetails.slice(0, 500);
 
   // react paginate
 
@@ -68,14 +74,22 @@ const ListView = () => {
 
   const filteredList = currentItems.filter((pokemon) => {
     if (searchState && searchTerm) {
-      return pokemon.name.includes(searchState);
+      return pokemon.name
+        .toLocaleLowerCase()
+        .includes(searchState.toLocaleLowerCase());
     } else {
       return pokemon;
     }
   });
 
+  // Conditional rendering
+
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="loading-container">
+        <h1 className="loading">Loading...</h1>
+      </div>
+    );
   }
   return (
     <>
@@ -113,18 +127,13 @@ const ListView = () => {
             activeLinkClassName="active-num"
           />
 
-          <select
-            name="item_num"
-            className="item-count"
-            value={itemsPerPage}
-            onChange={(e) => setItemsPerPage(e.target.value)}
-          >
-            <option value="8">8</option>
-            <option value="12">12</option>
-            <option value="24">24</option>
-          </select>
+          <SelectComponent
+            itemsPerPage={itemsPerPage}
+            setItemsPerPage={setItemsPerPage}
+          />
         </div>
       </section>
+
       <ColorModal />
       <SideModal pokemonDetails={pokemonDetails} />
     </>

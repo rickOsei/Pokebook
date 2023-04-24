@@ -6,8 +6,6 @@ import ColorReducer from "../Features/colorSlice";
 const rootReducer = combineReducers({
   pokemonList: ListReducer,
   generalColor: ColorReducer,
-  // Auth: AuthReducer,
-  // ratesData: ratesReducer,
 });
 
 const store = configureStore({

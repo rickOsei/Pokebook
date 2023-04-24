@@ -1,5 +1,3 @@
-import React from "react";
-
 const AboutPokemon = ({ height, weight, abilities }) => {
   return (
     <div className="about-container">

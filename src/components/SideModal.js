@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
 import "../styling/sidemodal.css";
-import { useSelector, useDispatch } from "react-redux";
+
+import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+
 import Figure from "./Figure";
 import Similar from "./Similar";
 import AboutPokemon from "./AboutPokemon";
@@ -13,7 +15,6 @@ const SideModal = ({ pokemonDetails }) => {
     (state) => state.pokemonList
   );
 
-  const dispatch = useDispatch();
   useEffect(() => {
     if (pokemonName) {
       setSinglePokemonDetails(

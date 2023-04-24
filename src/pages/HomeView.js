@@ -12,9 +12,8 @@ import { setSearchItem } from "../Features/listSlice";
 const HomeView = ({ color }) => {
   const [searchInput, setSearchInput] = useState("");
   const navigate = useNavigate();
-  const { searchState } = useSelector((state) => state.pokemonList);
-  const { generalColor } = useSelector((state) => state.generalColor);
 
+  const { generalColor } = useSelector((state) => state.generalColor);
   const dispatch = useDispatch();
 
   const dispatchSearchItem = () => {

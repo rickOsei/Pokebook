@@ -1,4 +1,3 @@
-import React from "react";
 import "../styling/homeview.css";
 import { useSelector } from "react-redux";
 

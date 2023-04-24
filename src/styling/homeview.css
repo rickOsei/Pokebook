@@ -80,7 +80,7 @@
 
 .search-view .search-icon svg {
   font-size: 25px;
-  color: white;
+  color: var(--primary-white);
 }
 
 .view-list-link {

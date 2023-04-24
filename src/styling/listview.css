@@ -60,6 +60,7 @@
   margin: 0 auto;
   width: 82%;
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
@@ -72,14 +73,15 @@
 
 .pokemon-page-nav {
   padding: 8px 15px;
-  background-color: #e1dfdf;
+  background-color: var(--primary-light-gray);
   border: none;
   border-radius: 10px;
   margin: 5px;
+  box-shadow: 0px 0px 4px 1px rgba(128, 128, 128, 0.142);
 }
 
 .pokemon-page-nav:hover {
-  background-color: red;
+  background-color: #e85382;
   color: #fff;
 }
 
@@ -89,23 +91,82 @@
   font-weight: 600;
 }
 
-.item-count {
-  padding: 8px 15px;
-  background-color: #e1dfdf;
+.active-num {
+  background-color: #e85382;
+  color: #fff;
+}
+
+/* Select option styling */
+
+.dropdown-container {
+  padding: 3px;
+  background-color: var(--primary-light-gray);
   border: none;
   border-radius: 10px;
   font-size: 15px;
   outline: none;
+  margin-top: 25px;
+  width: 100px;
+  height: 45px;
+  box-shadow: 0px 0px 4px 1px rgba(128, 128, 128, 0.174);
+  position: relative;
 }
 
-.item-count option {
-  background: white;
+.dropdown-container svg {
+  position: absolute;
+  top: 15px;
+  right: 10px;
+}
+
+.dropdown-header {
+  padding: 0.4em 2em 0.4em 1em;
+  font-weight: 500;
+  font-size: 18px;
+  background: #ffffff;
+
+  width: 35%;
+  height: 100%;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdownlist {
+  background: #ffffff;
+  border: 2px solid #e5e5e5;
+
+  font-size: 16px;
+  font-weight: 500;
+  width: 110px;
+  padding: 2px;
+  margin-top: 10px;
+
+  position: absolute;
+  right: 10px;
   border-radius: 10px;
 }
 
-.active-num {
-  background-color: rgb(255, 0, 0);
-  color: #fff;
+.listItem {
+  list-style: none;
+  padding: 5px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.listItem:hover {
+  background: var(--primary-light-gray);
+}
+
+@media screen and (min-width: 768px) {
+  .pagination-controls {
+    flex-direction: row;
+  }
+
+  .dropdown-container {
+    bottom: 38px;
+  }
 }
 
 @media screen and (min-width: 651px) and (max-width: 979px) {
@@ -132,5 +193,3 @@
     width: 85%;
   }
 }
-
-/* 650px */

@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { FaArrowLeft } from "react-icons/fa";
-import { closeSideModal } from "../Features/listSlice";
 import { useDispatch } from "react-redux";
+import React, { useState, useEffect } from "react";
+
+import { FaArrowLeft } from "react-icons/fa";
+
+import { closeSideModal } from "../Features/listSlice";
+
 import ColorThief from "colorthief";
 
 const Figure = ({ sprites, singlePokemonDetails, name }) => {

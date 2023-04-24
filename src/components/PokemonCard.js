@@ -9,14 +9,52 @@ const PokemonCard = ({ name, types, sprites }) => {
     (state) => state.pokemonList
   );
 
-  // console.log(isModalOpen, pokemonName);
-
   const dispatch = useDispatch();
 
   const handleClick = () => {
     dispatch(setPokemonName(name));
     dispatch(openSideModal());
   };
+
+  // const typeUnicode = {
+  //   Flying: "🦋",
+  //   Normal: "🐻",
+  //   Fire: "🔥",
+  //   Water: "🌊",
+  //   Grass: "🌿",
+  //   Fighting: "💪",
+  //   Poison: "☠️",
+  //   Electric: "⚡",
+  //   Ground: "🌱",
+  //   Rock: "🪨",
+  //   Psychic: "֎",
+  //   Ice: "🧊",
+  //   Bug: "🐞",
+  //   Ghost: "👻",
+  //   Steel: "🦾",
+  //   Dragon: "🐉",
+  //   Dark: "🖤",
+  // };
+
+  // const typeUnicode = [
+  //   { name: "Flying", unicode: "🦋" },
+  //   { name: "Normal", unicode: "🐻" },
+  //   { name: "Fire", unicode: "🔥" },
+  //   { name: "Water", unicode: "🌊" },
+  //   { name: "Grass", unicode: "🌿" },
+  //   { name: "Fighting", unicode: "💪" },
+  //   { name: "Poison", unicode: "☠️" },
+  //   { name: "Electric", unicode: "⚡" },
+  //   { name: "Ground", unicode: "🌱" },
+  //   { name: "Rock", unicode: "🪨" },
+  //   { name: "Psychic", unicode: "֎" },
+  //   { name: "Ice", unicode: "🧊" },
+  //   { name: "Bug", unicode: "🐞" },
+  //   { name: "Ghost", unicode: "👻" },
+  //   { name: "Steel", unicode: "🦾" },
+  //   { name: "Dragon", unicode: "🐉" },
+  //   { name: "Dark", unicode: "🖤" },
+  // ];
 
   return (
     <>

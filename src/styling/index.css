@@ -55,11 +55,21 @@ code {
     monospace;
 }
 
+:root {
+  --primary-white: #fff;
+  --primary-light-gray: #eee;
+  --primary-linear-gradient: linear-gradient(
+    270deg,
+    #ffffff 0%,
+    rgba(217, 217, 217, 0.2) 51.04%,
+    #ffffff 100%
+  );
+}
+
 /* Components */
 .main-title {
-  /* font-size: 48px; */
   font-weight: 700;
-  /* margin-bottom: 15px; */
+
   text-align: center;
   letter-spacing: 4px;
   font-family: "Clash Display", sans-serif;
@@ -81,11 +91,69 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .main-color {
   width: 35px;
   height: 35px;
   border-radius: inherit;
-  background: red;
+}
+
+/* Loading */
+
+.loading-container {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading {
+  overflow: hidden;
+  width: 13%;
+  animation: loader 1.5s ease-in-out 0.2s infinite;
+}
+
+@keyframes loader {
+  0% {
+    width: 11%;
+  }
+
+  50% {
+    width: 10%;
+  }
+
+  80% {
+    width: 9%;
+  }
+
+  100% {
+    width: 13%;
+  }
+}
+
+/* scroll bar */
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background: #292204;
+  transition: all 0.5s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64686f;
+}
+
+::-webkit-scrollbar-track {
+  background: #eee;
 }

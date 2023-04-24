@@ -5,8 +5,6 @@ const Similar = ({ types, pokemonDetails }) => {
   const [similar, setSimilar] = useState([]);
   const { pokemonName } = useSelector((state) => state.pokemonList);
 
-  // console.log(pokemonDetails);
-  // console.log(types[0].type.name);
   const pokemonType = types[0].type.name;
   const getSimilarPokemonFunc = () => {
     const similarPokemon = pokemonDetails.filter((pokemon) => {
@@ -17,19 +15,22 @@ const Similar = ({ types, pokemonDetails }) => {
 
   useEffect(() => {
     getSimilarPokemonFunc();
-  }, [pokemonName, pokemonDetails]);
+  }, [pokemonName, pokemonType]);
 
   if (similar.length === 0) {
     return <h1>Loading...</h1>;
   }
   const similarFiltered = similar.slice(0, 2);
 
+  console.log(similarFiltered);
+  // console.log(similar);
+
   return (
     <>
-      {similarFiltered.map((pokemon) => {
+      {similarFiltered.map((pokemon, index) => {
         const { name, sprites } = pokemon;
         return (
-          <article className="side-pokemon-card">
+          <article className="side-pokemon-card" key={index}>
             <figure className="side-pokemon-icon">
               <img src={sprites.other.dream_world.front_default} alt={name} />
             </figure>

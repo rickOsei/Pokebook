@@ -1,6 +1,6 @@
 import "../styling/navbar.css";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { MdOutlineSearch } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,7 +12,6 @@ import { setSearchItem } from "../Features/listSlice";
 import { openModal } from "../Features/colorSlice";
 
 const Navbar = ({ searchTerm, setSearchTerm }) => {
-  const { searchState } = useSelector((state) => state.pokemonList);
   const { generalColor } = useSelector((state) => state.generalColor);
   const dispatch = useDispatch();
 
