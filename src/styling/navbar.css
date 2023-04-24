@@ -55,11 +55,6 @@ nav {
 /* Input section */
 
 .nav-search-input {
-  /* flex: 2;
-  height: 50px;
-  display: flex;
-  justify-content: flex-start;
-  position: relative; */
   display: none;
 }
 
