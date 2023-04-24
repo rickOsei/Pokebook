@@ -22,7 +22,7 @@ const Similar = ({ types, pokemonDetails }) => {
   }
   const similarFiltered = similar.slice(0, 2);
 
-  console.log(similarFiltered);
+  // console.log(similarFiltered);
   // console.log(similar);
 
   return (

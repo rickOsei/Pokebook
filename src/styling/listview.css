@@ -62,6 +62,8 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex-wrap: wrap;
+  white-space: pre-wrap;
 }
 
 .pokemon-pagination {
@@ -69,6 +71,7 @@
   display: flex;
   font-family: "Clash Display", sans-serif;
   font-weight: 500;
+  flex-wrap: wrap;
 }
 
 .pokemon-page-nav {
@@ -153,6 +156,7 @@
   padding: 5px;
   text-align: center;
   border-radius: 10px;
+  margin-top: 0;
 }
 
 .listItem:hover {
@@ -165,7 +169,7 @@
   }
 
   .dropdown-container {
-    bottom: 38px;
+    bottom: 14px;
   }
 }
 

@@ -180,6 +180,10 @@
   white-space: nowrap;
 }
 
+.detail-value li {
+  margin-top: 0;
+}
+
 @media screen and (min-width: 425px) {
   .detail-name,
   .detail-value {

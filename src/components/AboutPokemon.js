@@ -13,11 +13,11 @@ const AboutPokemon = ({ height, weight, abilities }) => {
         </div>{" "}
         <div className="about-details">
           <h3 className="detail-name">Abilities</h3>
-          <h1 className="detail-value">
+          <div className="detail-value">
             {abilities.map((ability, index) => {
               return <li key={index}>{ability.ability.name}</li>;
             })}
-          </h1>
+          </div>
         </div>
       </div>
     </div>
