@@ -18,7 +18,11 @@ const Similar = ({ types, pokemonDetails }) => {
   }, [pokemonName, pokemonType]);
 
   if (similar.length === 0) {
-    return <h1>Loading...</h1>;
+    return (
+      <div className="loading-container">
+        <h1>Loading...</h1>;
+      </div>
+    );
   }
   const similarFiltered = similar.slice(0, 2);
 

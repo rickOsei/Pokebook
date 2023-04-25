@@ -2,12 +2,14 @@ import "../styling/listview.css";
 import "../styling/pokemonCard.css";
 
 import { useEffect, useState } from "react";
+
+import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 import ReactPaginate from "react-paginate";
+import ReactLoading from "react-loading";
 
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { MdOutlineSearch } from "react-icons/md";
-import axios from "axios";
 
 import Navbar from "../components/Navbar";
 import PokemonCard from "../components/PokemonCard";
@@ -21,6 +23,8 @@ const ListView = () => {
   const { pokemonList, searchState, isLoading, isModalOpen } = useSelector(
     (state) => state.pokemonList
   );
+  const { generalColor } = useSelector((state) => state.generalColor);
+
   const dispatch = useDispatch();
 
   const [searchTerm, setSearchTerm] = useState(searchState);
@@ -87,7 +91,12 @@ const ListView = () => {
   if (isLoading) {
     return (
       <div className="loading-container">
-        <h1 className="loading">Loading...</h1>
+        <ReactLoading
+          color={generalColor}
+          height={100}
+          width={100}
+          type={"spin"}
+        />
       </div>
     );
   }
