@@ -115,30 +115,6 @@ code {
   align-items: center;
 }
 
-.loading {
-  overflow: hidden;
-  width: 13%;
-  animation: loader 1.5s ease-in-out 0.2s infinite;
-}
-
-@keyframes loader {
-  0% {
-    width: 11%;
-  }
-
-  50% {
-    width: 10%;
-  }
-
-  80% {
-    width: 9%;
-  }
-
-  100% {
-    width: 13%;
-  }
-}
-
 /* scroll bar */
 
 ::-webkit-scrollbar {
