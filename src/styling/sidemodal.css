@@ -130,6 +130,22 @@
   align-items: center;
 }
 
+@media screen and (max-height: 731px) {
+  .pokemon-desc {
+    flex: 3;
+  }
+
+  .side-modal-icon {
+    height: 200px;
+  }
+
+  .side-modal-icon img {
+    width: 150px;
+    height: 150px;
+    top: 65px;
+  }
+}
+
 /* About Pokemon */
 
 .about-container {
@@ -166,7 +182,7 @@
   justify-content: flex-end;
   padding-right: 20px;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .detail-value {
@@ -176,7 +192,7 @@
   align-items: flex-start;
   padding-left: 20px;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 12px;
   white-space: nowrap;
 }
 
@@ -187,7 +203,7 @@
 @media screen and (min-width: 425px) {
   .detail-name,
   .detail-value {
-    font-size: 16px;
+    font-size: 14px;
     white-space: normal;
   }
 }
@@ -296,7 +312,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 50px;
+  margin-top: 10px;
   /* padding: 5px; */
   background: var(--primary-white);
   box-shadow: 5px -2px 30px 10px rgba(236, 236, 236, 0.863);
